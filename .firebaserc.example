@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "dentacollab-dev",
+    "staging": "dentacollab-staging",
+    "production": "dentacollab-prod"
+  }
+}

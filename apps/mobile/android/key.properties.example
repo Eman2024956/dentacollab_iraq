@@ -1,0 +1,10 @@
+# Android Production Keystore Configuration for DentaCollab
+# 1. Generate keystore:
+# keytool -genkey -v -keystore dentacollab-release.jks -keyalg RSA -keysize 2048 -validity 10000 -alias dentacollab-key
+# 2. Place dentacollab-release.jks in apps/mobile/android/app/
+# 3. Rename this file to key.properties and configure values below:
+
+keyAlias=dentacollab-key
+keyPassword=YourSecureKeyPassword
+storeFile=app/dentacollab-release.jks
+storePassword=YourSecureStorePassword

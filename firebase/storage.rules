@@ -1,0 +1,64 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    function getUserRole() {
+      return isAuthenticated() && ('role' in request.auth.token) ? request.auth.token.role : 'student';
+    }
+
+    function isStaff() {
+      return isAuthenticated() && getUserRole() in ['super_admin', 'academy_manager', 'content_editor', 'instructor', 'support_agent'];
+    }
+
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isSafeDocument() {
+      return request.resource.contentType.matches('image/.*') || request.resource.contentType == 'application/pdf';
+    }
+
+    // Default deny
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // Public Media (Course covers, gallery, banners)
+    match /public-media/{fileName} {
+      allow read: if true;
+      allow write: if isStaff() && isImage() && request.resource.size < 10 * 1024 * 1024;
+    }
+
+    // User Avatars
+    match /avatars/{uid}/{fileName} {
+      allow read: if true;
+      allow write: if isOwner(uid) && isImage() && request.resource.size < 5 * 1024 * 1024;
+    }
+
+    // Support Attachments
+    match /support/{uid}/{ticketId}/{fileName} {
+      allow read: if isOwner(uid) || isStaff();
+      allow write: if isOwner(uid) && isSafeDocument() && request.resource.size < 10 * 1024 * 1024;
+    }
+
+    // Payment Receipts (Private)
+    match /receipts/{uid}/{fileName} {
+      allow read: if isOwner(uid) || isStaff();
+      allow write: if isOwner(uid) && isSafeDocument() && request.resource.size < 10 * 1024 * 1024;
+    }
+
+    // Generated Certificate PDFs
+    match /certificates/{certificateId}.pdf {
+      allow read: if isStaff();
+      allow write: if isStaff();
+    }
+  }
+}

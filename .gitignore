@@ -1,0 +1,103 @@
+# ==========================================
+# Security & Credentials (CRITICAL - NEVER COMMIT)
+# ==========================================
+.env
+.env*.local
+.env.local
+.env.production
+.env.development
+*.env
+!*.env.example
+
+# Service Accounts & Private Keys
+*service-account*.json
+service-account*.json
+**/service-account*.json
+**/*service-account*.json
+*.pem
+*.p8
+*.p12
+*.key
+*.cer
+*.crt
+*.der
+*.mobileprovision
+
+# Mobile API Keys & Platform Configs
+**/firebase_options.dart
+!**/firebase_options.example.dart
+**/google-services.json
+**/GoogleService-Info.plist
+services_input/
+key.properties
+local.properties
+**/local.properties
+**/key.properties
+*.jks
+*.keystore
+
+# Firebase debug logs & caches
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+.firebase/
+
+# ==========================================
+# Dependencies & Package Managers
+# ==========================================
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ==========================================
+# Build Artifacts
+# ==========================================
+dist/
+**/dist/
+.next/
+**/.next/
+out/
+**/out/
+build/
+**/build/
+
+# ==========================================
+# Flutter / Dart
+# ==========================================
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+**/coverage/
+app.*.symbols
+app.*.map.json
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/android/.gradle/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+
+# ==========================================
+# OS & IDE Files
+# ==========================================
+.DS_Store
+**/.DS_Store
+Thumbs.db
+**/*.swp
+**/*.swo
+*~
+.idea/
+**/.idea/
+*.iml
+**/*.iml
+.vscode/
+**/.vscode/
+migrate_working_dir/

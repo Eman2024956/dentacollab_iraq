@@ -1,0 +1,13 @@
+{
+  "name": "@dentacollab/contracts",
+  "version": "1.0.0",
+  "description": "Cross-platform typed data contracts and enums for DentaCollab",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

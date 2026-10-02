@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>مطاعمي | تصفّح المطاعم</title>
+
+    <style>
+        :root {
+            --primary: #c95727;
+            --dark: #35251e;
+            --background: #faf6f1;
+            --border: #eadfd5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: clamp(10px, 3vw, 32px);
+            background:
+                radial-gradient(circle at top right, #f1ddcc, transparent 55%),
+                var(--background);
+            color: var(--dark);
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .site-card {
+            width: min(1440px, 100%);
+            margin-inline: auto;
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 20px 65px rgb(53 37 30 / 10%);
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 24px 28px;
+            background: linear-gradient(120deg, #efe1cd, #fff9f2);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            width: 54px;
+            height: 54px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            font-size: 28px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(22px, 3vw, 30px);
+        }
+
+        .description {
+            margin: 0;
+            color: #725f52;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .open-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 46px;
+            padding: 12px 22px;
+            border-radius: 14px;
+            background: var(--primary);
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 180ms ease;
+        }
+
+        .open-link:hover {
+            background: #a9431b;
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 4px;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 82vh;
+            height: 82dvh;
+            min-height: 480px;
+            border: 0;
+            background: white;
+        }
+
+        .site-footer {
+            padding: 16px 24px;
+            background: #fffcf8;
+            border-top: 1px solid var(--border);
+            color: #725f52;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .site-footer a {
+            color: #a9431b;
+            font-weight: 700;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 600px) {
+            .site-card {
+                border-radius: 18px;
+            }
+
+            .site-header {
+                padding: 20px;
+            }
+
+            .open-link {
+                width: 100%;
+            }
+
+            iframe {
+                height: 75vh;
+                height: 75dvh;
+                min-height: 420px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .open-link {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="site-card">
+        <header class="site-header">
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true">🍽️</div>
+
+                <div>
+                    <h1>مطاعمي</h1>
+                    <p class="description">
+                        تصفّح المطاعم واكتشف وجبتك المفضلة.
+                    </p>
+                </div>
+            </div>
+
+            <a class="open-link" href="https://matami.tawassl.com/" target="_blank" rel="noopener noreferrer">
+                افتح مطاعمي مباشرة
+                <span aria-hidden="true">↗</span>
+            </a>
+        </header>
+
+        <iframe src="https://matami.tawassl.com/" title="موقع مطاعمي لتصفح المطاعم والوجبات"
+            referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen"></iframe>
+
+        <footer class="site-footer">
+            إذا لم يظهر الموقع أو واجهت مشكلة أثناء الطلب،
+            <a href="https://matami.tawassl.com/" target="_blank" rel="noopener noreferrer">
+                افتحه في نافذة جديدة
+            </a>.
+        </footer>
+    </main>
+</body>
+
+</html>
